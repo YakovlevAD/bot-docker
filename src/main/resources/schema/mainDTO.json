@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EventDTO",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "info": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    }
+  },
+  "required": ["info"]
+}
