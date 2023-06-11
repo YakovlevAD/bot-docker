@@ -19,7 +19,7 @@ jobs:
       #        run: mvn clean install
 
       - name: Compile
-        run: mvn --file pom.xml clean compile
+        run: mvn --file pom.xml clean
 
       - name: Build
         run: mvn --file pom.xml install -DskipTests
