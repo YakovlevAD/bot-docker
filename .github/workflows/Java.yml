@@ -1,0 +1,37 @@
+name: Java
+
+on:
+  push:
+    branches:
+      - 'releases/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      #      - name: Maven Verify
+      #        run: mvn clean install
+
+      - name: Compile
+        run: mvn --file pom.xml clean compile
+
+      - name: Build
+        run: mvn --file pom.xml install -DskipTests
+      # - name: Build Java executable
+      #   run: java -jar demo.jar
+      - name: Build docker & upload image to registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: ADYakovlev/demo/demo
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DEPLOY_TOKEN }}
+          registry: docker.pkg.github.com
+          dockerfile: Dockerfile
+          buildoptions: "--compress --force-rm"
+
