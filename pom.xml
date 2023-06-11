@@ -17,6 +17,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.7.12</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -27,6 +34,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -34,6 +46,34 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jsonschema2pojo</groupId>
+				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+				<version>1.1.1</version>
+<!--				<configuration>-->
+<!--					<sourceDirectory>../commonJSON</sourceDirectory>-->
+<!--					<targetPackage>com.example.demo</targetPackage>-->
+<!--					<outputDirectory>${project.build.directory}/generated-sources/jsonschema2pojo</outputDirectory>-->
+<!--				</configuration>-->
+				<configuration>
+					<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+					<targetPackage>com.example.demo.types</targetPackage>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate-classes-from-json-schemas</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+<!--						<configuration>-->
+<!--							<sourceDirectory>../commonJSON</sourceDirectory>-->
+<!--							<targetPackage>com.example.generated</targetPackage>-->
+<!--							<outputDirectory>${project.build.directory}/generated-sources/jsonschema2pojo</outputDirectory>-->
+<!--						</configuration>-->
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
