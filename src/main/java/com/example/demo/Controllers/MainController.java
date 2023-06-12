@@ -20,8 +20,8 @@ public class MainController {
     public MainService mainService;
 
     @GetMapping
-    public ResponseEntity getMainJSON(@RequestParam(required = false) Integer errorNumber) {
-        return mainService.getResponse(errorNumber);
+    public ResponseEntity getMainJSON(@RequestParam(required = false) Integer errorCode) {
+        return mainService.getResponse(errorCode);
     }
 
     @GetMapping("test")
