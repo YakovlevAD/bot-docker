@@ -26,7 +26,7 @@ jobs:
       # - name: Build Java executable
       #   run: java -jar demo.jar
       - name: Build docker & upload image to registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: ADYakovlev/demo/demo
           username: ${{ secrets.DOCKER_USERNAME }}
