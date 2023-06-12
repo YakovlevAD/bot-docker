@@ -15,7 +15,7 @@ public class MainService {
         mainDTO.setNumber((int)(100*Math.random()));
 
         if (errorNumber == null ) {
-            mainDTO.setInfo( "200 ok, additionally you can add GET parameter /?errorNumber=404 (:");
+            mainDTO.setInfo( "200 ok, additionally you can add GET parameter /?errorCode=404 (:");
             return ResponseEntity.status(HttpStatus.OK).body(mainDTO);
         }
 
